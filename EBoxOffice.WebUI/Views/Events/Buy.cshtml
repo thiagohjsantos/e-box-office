@@ -1,0 +1,64 @@
+﻿@model EBoxOffice.Application.DTOs.EventDTO
+
+<h3>Buy Ticket</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Description)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Category)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Category.Name)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Tickets.Price)</dt>
+        <dd class="col-sm-10">@ViewBag.ticketPrice</dd>
+    </dl>
+    <hr />
+</div>
+
+<div class="form-group">
+    <label class="control-label">Payment Methods</label>
+    <select id="elementSelected" class="form-control col-md-2" asp-items="ViewBag.paymentMethods"> </select>
+</div>
+
+<div class="form-group" id="cardNumber">
+    <label class="control-label">Card No</label>
+    <input class="form-control col-md-2" />
+</div>
+
+<div class="form-group" id="cardExpiration">
+    <label class="control-label">Expire</label>
+    <input class="form-control col-md-2" />
+</div>
+
+<div class="form-group" id="cardCvv">
+    <label class="control-label">CVV</label>
+    <input class="form-control col-md-2" /> 
+</div>
+
+<div>
+    <button type="button" data-toggle="modal" data-target="#slipModal" class="btn btn-info">Confirm Payment</button> |
+    <a asp-controller="Home" asp-action="Index">Back to List</a>
+</div>
+
+<form>
+    <div class="modal fade" id="slipModal" style="text-align: center">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bank Slip</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="~/Images/slip_code.png"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
